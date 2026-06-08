@@ -217,10 +217,10 @@
   <text x="358" y="264" font-family="monospace" font-size="9" fill="#10b981" opacity="0.8">Pro</text>
 
   <!-- Layer labels -->
-  <text x="45" y="50" font-family="monospace" font-size="8" fill="#4a5068" opacity="0.6">Input</text>
-  <text x="130" y="100" font-family="monospace" font-size="8" fill="#4a5068" opacity="0.6">Hidden</text>
-  <text x="230" y="135" font-family="monospace" font-size="8" fill="#4a5068" opacity="0.6">Deep</text>
-  <text x="320" y="85" font-family="monospace" font-size="8" fill="#4a5068" opacity="0.6">Output</text>
+  <text x="45" y="50" font-family="monospace" font-size="8" fill="#94a3b8" opacity="0.8">Input</text>
+  <text x="130" y="100" font-family="monospace" font-size="8" fill="#94a3b8" opacity="0.8">Hidden</text>
+  <text x="230" y="135" font-family="monospace" font-size="8" fill="#94a3b8" opacity="0.8">Deep</text>
+  <text x="320" y="85" font-family="monospace" font-size="8" fill="#94a3b8" opacity="0.8">Output</text>
 
   <!-- Floating particles -->
   <circle cx="100" cy="150" r="1.5" fill="#818cf8" opacity="0.4">
@@ -272,12 +272,6 @@
     <animate attributeName="opacity" values="0.5;1;0.5" dur="3.5s" repeatCount="indefinite"/>
   </circle>
 
-  <!-- Pill Badge -->
-  <rect x="432" y="55" width="200" height="26" rx="13" fill="none" stroke="#818cf8" stroke-opacity="0.3" stroke-width="1">
-    <animate attributeName="stroke-opacity" values="0.2;0.5;0.2" dur="3s" repeatCount="indefinite"/>
-  </rect>
-  <text x="452" y="73" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" font-weight="500" fill="#a5b4fc" opacity="0.85">✦ AI-Powered Sentiment</text>
-
   <!-- Main Title -->
   <text x="435" y="115" font-family="'Segoe UI', system-ui, sans-serif" font-size="40" font-weight="800" fill="url(#tg)" letter-spacing="3">INDOBERTWEET</text>
 
@@ -285,8 +279,8 @@
   <text x="438" y="168" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" font-weight="600" fill="#8b92a5" letter-spacing="5">SENTIMENT ANALYZER · LCC KALBAR</text>
 
   <!-- Description -->
-  <text x="438" y="200" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#4a5068" letter-spacing="0.5">Klasifikasi sentimen 6.000 komentar YouTube menggunakan</text>
-  <text x="438" y="216" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#4a5068" letter-spacing="0.5">model Fine-Tuned IndoBERTweet dengan akurasi 93.28%</text>
+  <text x="438" y="200" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#cbd5e1" letter-spacing="0.5">Klasifikasi sentimen 6.000 komentar YouTube menggunakan</text>
+  <text x="438" y="216" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#cbd5e1" letter-spacing="0.5">model Fine-Tuned IndoBERTweet dengan akurasi 93.28%</text>
 
   <!-- Stats Boxes -->
   <!-- Box 1: Dataset -->
@@ -294,21 +288,21 @@
     <animate attributeName="stroke-opacity" values="0.08;0.2;0.08" dur="4s" repeatCount="indefinite"/>
   </rect>
   <text x="493" y="261" font-family="monospace" font-size="16" font-weight="700" fill="url(#tg)" text-anchor="middle">6,000</text>
-  <text x="493" y="280" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#4a5068" text-anchor="middle">Dataset</text>
+  <text x="493" y="280" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Dataset</text>
 
   <!-- Box 2: Accuracy -->
   <rect x="560" y="238" width="110" height="52" rx="10" fill="#0f0f1e" fill-opacity="0.6" stroke="#818cf8" stroke-opacity="0.12" stroke-width="1">
     <animate attributeName="stroke-opacity" values="0.08;0.2;0.08" dur="4.5s" repeatCount="indefinite"/>
   </rect>
   <text x="615" y="261" font-family="monospace" font-size="16" font-weight="700" fill="url(#tg)" text-anchor="middle">93.28%</text>
-  <text x="615" y="280" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#4a5068" text-anchor="middle">Akurasi</text>
+  <text x="615" y="280" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Akurasi</text>
 
   <!-- Box 3: Classes -->
   <rect x="682" y="238" width="110" height="52" rx="10" fill="#0f0f1e" fill-opacity="0.6" stroke="#818cf8" stroke-opacity="0.12" stroke-width="1">
     <animate attributeName="stroke-opacity" values="0.08;0.2;0.08" dur="3.8s" repeatCount="indefinite"/>
   </rect>
   <text x="737" y="261" font-family="monospace" font-size="16" font-weight="700" fill="url(#tg)" text-anchor="middle">3</text>
-  <text x="737" y="280" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#4a5068" text-anchor="middle">Kelas Sentimen</text>
+  <text x="737" y="280" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Kelas Sentimen</text>
 
   <!-- Bottom separator -->
   <rect x="0" y="316" width="900" height="4" fill="url(#sep)" opacity="0.6">

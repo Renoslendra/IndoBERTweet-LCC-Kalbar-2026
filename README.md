@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=818CF8&center=true&vCenter=true&multiline=true&repeat=true&width=700&height=80&lines=Klasifikasi+Sentimen+6000+Komentar+YouTube;Fine-Tuned+IndoBERTweet+%7C+Akurasi+93.28%25;Mata+Kuliah+Penambangan+Data+%7C+Semester+4" alt="Typing SVG">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=818CF8&center=true&vCenter=true&multiline=true&repeat=true&width=700&height=120&lines=Klasifikasi+Sentimen+6000+Komentar+YouTube;Fine-Tuned+IndoBERTweet+%7C+Akurasi+93.28%25;Mata+Kuliah+Penambangan+Data+%7C+Semester+4" alt="Typing SVG">
 </p>
 
 <img src="hasil/separator.svg" width="100%">
@@ -224,7 +224,7 @@ Buka browser dan akses: **[http://127.0.0.1:5000](http://127.0.0.1:5000)** 🚀
 <img src="hasil/footer_line.svg" width="100%">
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=14&pause=1000&color=4A5068&center=true&vCenter=true&repeat=true&width=500&height=30&lines=Dikembangkan+dengan+penuh+dedikasi+untuk+kepentingan+akademik+%E2%9C%A8" alt="Footer">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=14&pause=1000&color=94A3B8&center=true&vCenter=true&repeat=true&width=700&height=40&lines=Dikembangkan+dengan+penuh+dedikasi+untuk+kepentingan+akademik+%E2%9C%A8" alt="Footer">
 </p>
 
 <p align="center">
