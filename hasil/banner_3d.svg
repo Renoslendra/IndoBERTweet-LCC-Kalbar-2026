@@ -1,0 +1,226 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 250" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05050d" />
+      <stop offset="50%" stop-color="#08081a" />
+      <stop offset="100%" stop-color="#05050d" />
+    </linearGradient>
+
+    <!-- Glow Filter -->
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="glow-heavy" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Node Colors -->
+    <radialGradient id="nodeKritik" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff6b8b" />
+      <stop offset="100%" stop-color="#f43f5e" />
+    </radialGradient>
+    <radialGradient id="nodeNetral" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#70aeff" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </radialGradient>
+    <radialGradient id="nodePro" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#46ffd0" />
+      <stop offset="100%" stop-color="#10b981" />
+    </radialGradient>
+    <radialGradient id="nodeCenter" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#a5b4fc" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </radialGradient>
+
+    <!-- Style for Animations -->
+    <style>
+      .bg { fill: url(#bgGrad); }
+      
+      /* 3D Rotating Globe/Network Container */
+      .network-container {
+        transform-origin: 150px 125px;
+        animation: rotateGlobe 20s infinite linear;
+      }
+      
+      /* Individual Node Float */
+      .node {
+        filter: url(#glow);
+        transform-origin: center;
+        animation: floatNode 3s infinite ease-in-out alternate;
+      }
+      
+      .connection {
+        stroke: #6366f1;
+        stroke-opacity: 0.12;
+        stroke-width: 1;
+        stroke-dasharray: 3 3;
+        animation: dash 40s infinite linear;
+      }
+      
+      .connection-active {
+        stroke: url(#lineGrad);
+        stroke-opacity: 0.5;
+        stroke-width: 1.5;
+        filter: url(#glow);
+      }
+
+      /* Animated Path for Data Stream */
+      .stream-path {
+        stroke-dasharray: 30 180;
+        stroke-dashoffset: 0;
+        animation: stream 5s infinite linear;
+      }
+
+      /* Grid Background Animation */
+      .grid-lines {
+        stroke: #818cf8;
+        stroke-opacity: 0.025;
+      }
+
+      /* Glowing Orbs */
+      .orb-1 {
+        fill: #8b5cf6;
+        fill-opacity: 0.12;
+        filter: url(#glow-heavy);
+        animation: floatOrb1 12s infinite ease-in-out alternate;
+      }
+      .orb-2 {
+        fill: #ec4899;
+        fill-opacity: 0.1;
+        filter: url(#glow-heavy);
+        animation: floatOrb2 15s infinite ease-in-out alternate;
+      }
+
+      /* Title styling */
+      .title-text {
+        font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+        font-weight: 800;
+        font-size: 38px;
+        letter-spacing: 5px;
+        fill: url(#textGrad);
+        filter: drop-shadow(0 2px 8px rgba(99, 102, 241, 0.3));
+      }
+      .subtitle-text {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        font-weight: 600;
+        fill: #8b92a5;
+        font-size: 11px;
+        letter-spacing: 6px;
+      }
+      .desc-text {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        fill: #4b526d;
+        font-size: 10px;
+        letter-spacing: 1.5px;
+      }
+
+      /* Keyframe animations */
+      @keyframes rotateGlobe {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      @keyframes floatNode {
+        0% { transform: scale(0.9) translateY(-3px); }
+        100% { transform: scale(1.1) translateY(3px); }
+      }
+      
+      @keyframes dash {
+        to { stroke-dashoffset: -1000; }
+      }
+      
+      @keyframes stream {
+        0% { stroke-dashoffset: 400; }
+        100% { stroke-dashoffset: 0; }
+      }
+
+      @keyframes floatOrb1 {
+        0% { cx: 120px; cy: 60px; r: 50px; }
+        100% { cx: 200px; cy: 160px; r: 80px; }
+      }
+      @keyframes floatOrb2 {
+        0% { cx: 700px; cy: 190px; r: 60px; }
+        100% { cx: 620px; cy: 90px; r: 90px; }
+      }
+    </style>
+    
+    <!-- Line Gradient -->
+    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e" />
+      <stop offset="50%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+
+    <!-- Text Gradient -->
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="40%" stop-color="#c4b5fd" />
+      <stop offset="70%" stop-color="#818cf8" />
+      <stop offset="100%" stop-color="#f0abfc" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="250" class="bg" />
+
+  <!-- Animated Ambient Orbs -->
+  <circle class="orb-1" cx="150" cy="80" r="60" />
+  <circle class="orb-2" cx="650" cy="170" r="70" />
+
+  <!-- Grid lines -->
+  <g class="grid-lines">
+    <path d="M 0,25 L 800,25 M 0,50 L 800,50 M 0,75 L 800,75 M 0,100 L 800,100 M 0,125 L 800,125 M 0,150 L 800,150 M 0,175 L 800,175 M 0,200 L 800,200 M 0,225 L 800,225" />
+    <path d="M 50,0 L 50,250 M 100,0 L 100,250 M 150,0 L 150,250 M 200,0 L 200,250 M 250,0 L 250,250 M 300,0 L 300,250 M 350,0 L 350,250 M 400,0 L 400,250 M 450,0 L 450,250 M 500,0 L 500,250 M 550,0 L 550,250 M 600,0 L 600,250 M 650,0 L 650,250 M 700,0 L 700,250 M 750,0 L 750,250" />
+  </g>
+
+  <!-- Left: 3D Rotating Network Globe -->
+  <g class="network-container">
+    <!-- Outer connecting ring lines -->
+    <line class="connection" x1="80" y1="70" x2="150" y2="40" />
+    <line class="connection" x1="150" y1="40" x2="220" y2="80" />
+    <line class="connection" x1="220" y1="80" x2="200" y2="170" />
+    <line class="connection" x1="200" y1="170" x2="100" y2="190" />
+    <line class="connection" x1="100" y1="190" x2="80" y2="70" />
+    
+    <!-- Central connections -->
+    <line class="connection" x1="80" y1="70" x2="150" y2="125" />
+    <line class="connection" x1="150" y1="40" x2="150" y2="125" />
+    <line class="connection" x1="220" y1="80" x2="150" y2="125" />
+    <line class="connection" x1="200" y1="170" x2="150" y2="125" />
+    <line class="connection" x1="100" y1="190" x2="150" y2="125" />
+
+    <!-- 3D Active Stream Paths -->
+    <path d="M 80,70 L 150,125 L 200,170" fill="none" class="connection-active stream-path" />
+    <path d="M 150,40 L 150,125 L 100,190" fill="none" class="connection-active stream-path" style="animation-delay: -2.5s;" />
+
+    <!-- Nodes with 3D Radial Gradients -->
+    <circle class="node" cx="80" cy="70" r="7" fill="url(#nodeKritik)" style="animation-delay: -0.5s;" />
+    <circle class="node" cx="150" cy="40" r="8" fill="url(#nodeNetral)" style="animation-delay: -1.2s;" />
+    <circle class="node" cx="220" cy="80" r="7" fill="url(#nodePro)" style="animation-delay: -2s;" />
+    <circle class="node" cx="200" cy="170" r="9" fill="url(#nodeKritik)" style="animation-delay: -0.8s;" />
+    <circle class="node" cx="100" cy="190" r="8" fill="url(#nodePro)" style="animation-delay: -1.5s;" />
+    
+    <!-- Center core node -->
+    <circle class="node" cx="150" cy="125" r="12" fill="url(#nodeCenter)" style="animation-delay: 0s;" />
+  </g>
+
+  <!-- Right: Title & Branding Information -->
+  <g transform="translate(320, 0)">
+    <!-- Glowing accents -->
+    <line x1="0" y1="120" x2="430" y2="120" stroke="#6366f1" stroke-opacity="0.3" stroke-width="1.5" />
+    <circle cx="0" cy="120" r="4" fill="#6366f1" />
+    <circle cx="430" cy="120" r="4" fill="#ec4899" />
+    
+    <!-- Title Text -->
+    <text class="title-text" x="0" y="95">INDOBERTWEET</text>
+    
+    <!-- Subtitle Text -->
+    <text class="subtitle-text" x="5" y="145">SENTIMENT ANALYZER &bull; LCC KALBAR</text>
+    
+    <!-- Academic context -->
+    <text class="desc-text" x="5" y="170">TUGAS AKHIR MATA KULIAH PENAMBANGAN DATA (SEMESTER 4)</text>
+  </g>
+</svg>

@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="hasil/banner_3d.svg" alt="IndoBERTweet Sentiment Analyzer Banner" width="100%">
+</p>
+
 # 🇮🇩 Klasifikasi Sentimen Komentar YouTube LCC 4 Pilar Kalbar - IndoBERTweet
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
