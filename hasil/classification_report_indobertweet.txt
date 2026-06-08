@@ -1,0 +1,4 @@
+              label  precision   recall  f1_score  support
+kritik_juri_panitia   0.958831 0.953765  0.956291      757
+             netral   0.902655 0.947368  0.924471      323
+        pro_peserta   0.750000 0.625000  0.681818       72

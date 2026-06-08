@@ -1,0 +1,12 @@
+{
+  "label2id": {
+    "kritik_juri_panitia": 0,
+    "netral": 1,
+    "pro_peserta": 2
+  },
+  "id2label": {
+    "0": "kritik_juri_panitia",
+    "1": "netral",
+    "2": "pro_peserta"
+  }
+}

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IndoBERTweet Sentiment Analyzer - LCC 4 Pilar Kalbar</title>
+    <meta name="description" content="Aplikasi demo analisis sentimen komentar YouTube mengenai kontroversi LCC 4 Pilar Kalimantan Barat menggunakan model fine-tuning IndoBERTweet.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <canvas id="particles" aria-hidden="true"></canvas>
+    <div class="bg-grid-effect" aria-hidden="true"></div>
+    <div class="ambient-layer" aria-hidden="true"></div>
+
+    <nav class="site-nav" id="site-nav" aria-label="Navigasi utama">
+        <div class="nav-inner">
+            <a href="#hero" class="brand-link" aria-label="IndoBERTweet Analyzer">
+                <span class="logo-icon">ID</span>
+                <span class="brand-text">IndoBERTweet Analyzer</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="#analyzer-section" class="nav-link">Analyzer</a>
+                <a href="#metrics-section" class="nav-link">Metrik</a>
+                <a href="#history-section" class="nav-link">Riwayat</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero-section" id="hero">
+            <div class="hero-content">
+                <h1 class="hero-title" id="app-title">
+                    <span class="hero-line reveal fade-up">Analisis Sentimen</span>
+                    <span class="hero-line hero-gradient reveal fade-up">Komentar YouTube</span>
+                    <span class="hero-line reveal fade-up">LCC 4 Pilar Kalbar</span>
+                </h1>
+
+                <p class="hero-copy reveal fade-up">
+                    Klasifikasi sentimen 6000 komentar YouTube menggunakan model IndoBERTweet fine-tuned dengan akurasi tinggi.
+                </p>
+
+                <div class="hero-actions reveal fade-up">
+                    <a href="#analyzer-section" class="btn-primary btn-hero">Mulai Analisis</a>
+                </div>
+
+                <div class="hero-stats reveal fade-up">
+                    <div class="stat-card">
+                        <strong class="counter" id="hero-dataset" data-counter-target="6000">6.000</strong>
+                        <span>Dataset</span>
+                    </div>
+                    <div class="stat-card">
+                        <strong class="counter" id="hero-accuracy" data-counter-target="93.28" data-counter-suffix="%">93.28%</strong>
+                        <span>Akurasi</span>
+                    </div>
+                    <div class="stat-card">
+                        <strong>3</strong>
+                        <span>Kelas Sentimen</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-separator" aria-hidden="true"><span></span></div>
+
+        <section class="page-section analyzer-section" id="analyzer-section" aria-labelledby="analyzer-title">
+            <div class="section-heading reveal fade-up">
+                <span class="pill-badge">Analyzer</span>
+                <h2 id="analyzer-title">Analisis Komentar</h2>
+                <p>Masukkan komentar YouTube dan lihat prediksi sentimen beserta distribusi probabilitas kelas.</p>
+            </div>
+
+            <div class="analyzer-grid">
+                <section class="glass-card input-card reveal slide-left" id="single-pred-section">
+                    <div class="card-header">
+                        <span class="card-icon">Input</span>
+                        <div>
+                            <h3>Komentar Tunggal</h3>
+                            <p>Prediksi real-time dari endpoint model lokal.</p>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <div class="input-label-row">
+                            <label for="comment-input">Komentar YouTube</label>
+                            <span id="char-counter">0 karakter</span>
+                        </div>
+                        <textarea id="comment-input" placeholder="Contoh: Juri harus adil dan mengevaluasi sistem penilaian..." rows="6"></textarea>
+                    </div>
+
+                    <div class="actions-wrapper">
+                        <button id="btn-analyze" class="btn-primary" type="button">
+                            <span class="btn-text">Analisis Sentimen</span>
+                            <span class="spinner-inline id-spinner" style="display: none;"></span>
+                        </button>
+                        <button id="btn-clear" class="btn-secondary" type="button">Reset</button>
+                    </div>
+
+                    <div class="quick-examples">
+                        <span>Contoh cepat</span>
+                        <div class="examples-list">
+                            <button class="btn-example" type="button" data-text="Juri dan panitia harus mengevaluasi ulang penilaian ini.">Kritik Juri</button>
+                            <button class="btn-example" type="button" data-text="Kasihan anak-anak itu sudah berjuang keras, tetap semangat ya!">Pro Peserta</button>
+                            <button class="btn-example" type="button" data-text="Boleh minta link rekaman penuh lombanya?">Netral</button>
+                            <button class="btn-example" type="button" data-text="Aturan lombanya sangat aneh dan merugikan sekolah Kalbar.">Keputusan Janggal</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="glass-card result-card reveal slide-right" id="prediction-result-card">
+                    <div class="card-header">
+                        <span class="card-icon">Hasil</span>
+                        <div>
+                            <h3>Hasil Sentimen</h3>
+                            <p>Distribusi kelas dan metrik acuan prediksi.</p>
+                        </div>
+                    </div>
+
+                    <div class="empty-state" id="result-empty-state">
+                        <div class="empty-mark" aria-hidden="true"></div>
+                        <strong>Hasil analisis akan muncul di sini.</strong>
+                        <span>Jalankan prediksi untuk melihat label, confidence score, dan probabilitas tiap kelas.</span>
+                    </div>
+
+                    <div class="result-details" id="result-details" hidden>
+                        <div class="result-badge-container">
+                            <span class="result-badge" id="result-label">KRITIK JURI PANITIA</span>
+                            <div class="confidence-wrapper">
+                                <span class="conf-label">Confidence Score</span>
+                                <span class="conf-val" id="result-confidence">98.5%</span>
+                            </div>
+                        </div>
+
+                        <div class="probability-bars">
+                            <h4>Distribusi Probabilitas Kelas</h4>
+
+                            <div class="bar-item kritik">
+                                <div class="bar-label-row">
+                                    <span>Kritik Juri/Panitia</span>
+                                    <span id="prob-kritik-val">0.0%</span>
+                                </div>
+                                <div class="bar-outer">
+                                    <div class="bar-inner" id="prob-kritik-bar" style="width: 0%;"></div>
+                                </div>
+                            </div>
+
+                            <div class="bar-item netral">
+                                <div class="bar-label-row">
+                                    <span>Netral / Lainnya</span>
+                                    <span id="prob-netral-val">0.0%</span>
+                                </div>
+                                <div class="bar-outer">
+                                    <div class="bar-inner" id="prob-netral-bar" style="width: 0%;"></div>
+                                </div>
+                            </div>
+
+                            <div class="bar-item pro_peserta">
+                                <div class="bar-label-row">
+                                    <span>Pro Peserta / Dukungan</span>
+                                    <span id="prob-pro-val">0.0%</span>
+                                </div>
+                                <div class="bar-outer">
+                                    <div class="bar-inner" id="prob-pro-bar" style="width: 0%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="prediction-metric-panel" id="prediction-metric-card" style="display: none;">
+                            <h4>Acuan Metrik Kelas Prediksi</h4>
+                            <div class="class-metric-grid">
+                                <div>
+                                    <span>Precision</span>
+                                    <strong id="pred-metric-precision">0.00%</strong>
+                                </div>
+                                <div>
+                                    <span>Recall</span>
+                                    <strong id="pred-metric-recall">0.00%</strong>
+                                </div>
+                                <div>
+                                    <span>F1-Score</span>
+                                    <strong id="pred-metric-f1">0.00%</strong>
+                                </div>
+                                <div>
+                                    <span>Data Latih</span>
+                                    <strong id="pred-metric-dataset">0</strong>
+                                </div>
+                            </div>
+                            <p id="pred-metric-note">Metrik kelas ini berasal dari file evaluasi model dan distribusi dataset lokal.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <div class="section-separator" aria-hidden="true"><span></span></div>
+
+        <section class="page-section metrics-section" id="metrics-section" aria-labelledby="metrics-title">
+            <div class="section-heading reveal fade-up">
+                <span class="pill-badge">Performa Model</span>
+                <h2 id="metrics-title">Metrik Evaluasi IndoBERTweet</h2>
+                <p id="metrics-intro">Memuat metrik dari folder hasil dan dataset...</p>
+            </div>
+
+            <section class="glass-card metrics-card reveal fade-up" id="model-metrics-section">
+                <div class="model-summary-grid">
+                    <div class="model-summary-item reveal scale-up">
+                        <span>Akurasi</span>
+                        <strong id="model-accuracy">0.00%</strong>
+                    </div>
+                    <div class="model-summary-item reveal scale-up">
+                        <span>F1 Weighted</span>
+                        <strong id="model-f1-weighted">0.00%</strong>
+                    </div>
+                    <div class="model-summary-item reveal scale-up">
+                        <span>Total Dataset</span>
+                        <strong id="model-dataset-total">0</strong>
+                    </div>
+                    <div class="model-summary-item reveal scale-up">
+                        <span>Data Evaluasi</span>
+                        <strong id="model-test-total">0</strong>
+                    </div>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-row header">
+                        <span>Kategori</span>
+                        <span>Dataset</span>
+                        <span>Evaluasi</span>
+                        <span>Precision</span>
+                        <span>Recall</span>
+                        <span>F1-Score</span>
+                    </div>
+                    <div id="metrics-rows">
+                        <div class="metric-row">
+                            <span class="lbl">Memuat...</span>
+                            <span data-label="Dataset">-</span>
+                            <span data-label="Evaluasi">-</span>
+                            <span data-label="Precision">-</span>
+                            <span data-label="Recall">-</span>
+                            <span data-label="F1-Score">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="metrics-note">
+                    <p id="metrics-source-note">Metrik akan tersinkron dari file evaluasi yang ada di project.</p>
+                </div>
+            </section>
+        </section>
+
+        <div class="section-separator" aria-hidden="true"><span></span></div>
+
+        <section class="page-section history-section" id="history-section" aria-labelledby="history-title">
+            <div class="section-heading reveal fade-up">
+                <span class="pill-badge">Riwayat</span>
+                <h2 id="history-title">Riwayat Analisis Sesi Ini</h2>
+                <p>Prediksi terbaru ditambahkan ke bagian atas tabel selama sesi browser berjalan.</p>
+            </div>
+
+            <section class="glass-card history-card reveal fade-up" id="prediction-history-section">
+                <div class="history-toolbar">
+                    <div>
+                        <span class="card-icon">Riwayat</span>
+                        <strong id="history-count">0 prediksi</strong>
+                    </div>
+                    <button id="btn-clear-history" class="btn-secondary btn-small" type="button">Bersihkan</button>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="history-table" id="history-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;">No</th>
+                                <th>Komentar</th>
+                                <th style="width: 210px;">Prediksi Sentimen</th>
+                                <th style="width: 160px;">Confidence Score</th>
+                            </tr>
+                        </thead>
+                        <tbody id="history-tbody">
+                            <tr class="empty-row" id="history-empty-row">
+                                <td colspan="4">
+                                    <div class="history-empty">
+                                        <strong>Belum ada riwayat prediksi.</strong>
+                                        <span>Hasil analisis akan tersimpan otomatis di sini.</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="logo-icon">ID</span>
+                <strong>IndoBERTweet Analyzer</strong>
+            </div>
+            <p>Mata Kuliah Penambangan Data </p>
+            <p>&copy; 2026 Proyek Klasifikasi Sentimen LCC Kalbar</p>
+        </div>
+    </footer>
+
+    <button id="scroll-top" class="scroll-top" type="button" aria-label="Kembali ke atas">Top</button>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
