@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="hasil/banner_3d.svg" alt="IndoBERTweet Sentiment Analyzer Banner" width="100%">
+  <img src="https://raw.githubusercontent.com/Renoslendra/IndoBERTweet-LCC-Kalbar-2026/main/hasil/banner_3d.svg" alt="IndoBERTweet Sentiment Analyzer Banner" width="100%">
 </p>
 
 # 🇮🇩 Klasifikasi Sentimen Komentar YouTube LCC 4 Pilar Kalbar - IndoBERTweet
